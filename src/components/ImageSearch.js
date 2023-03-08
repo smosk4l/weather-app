@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ImageSearch = ({ searchText }) => {
+const WeatherSearch = ({ searchText }) => {
   const [text, setText] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const ImageSearch = ({ searchText }) => {
             onChange={(e) => setText(e.target.value)}
             className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
-            placeholder="Search Image Term..."
+            placeholder="Check Weather in your City..."
           />
           <button
             onClick={onSubmit}
@@ -30,4 +30,4 @@ const ImageSearch = ({ searchText }) => {
   );
 };
 
-export default ImageSearch;
+export default WeatherSearch;

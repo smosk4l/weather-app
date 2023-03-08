@@ -4,23 +4,27 @@ import WeatherCard from "./components/WeatherCard";
 import "./App.css";
 
 function App() {
-  const [weather, setWeather] = useState([]);
+  const [data, setData] = useState([]);
   const [term, setTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${term}&units=metric&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
     )
       .then((res) => res.json())
-      .then((data) => {
-        setWeather(data);
+      .then((res) => {
+        if (res.cod === 200) {
+          setData(res);
+          setIsLoading(false);
+        }
       })
       .catch((err) => console.log(err));
   }, [term]);
   return (
     <>
       <ImageSearch searchText={(text) => setTerm(text)} />
-      <WeatherCard />
+      {isLoading ? "" : <WeatherCard weatherData={data} />}
     </>
   );
 }
