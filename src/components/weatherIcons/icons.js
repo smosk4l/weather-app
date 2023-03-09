@@ -376,9 +376,18 @@ export default function Icons(icon) {
     "11n": Icon07,
     "13d": Icon08,
     "13n": Icon08,
-    "14d": Icon09,
-    "14n": Icon09,
+    "50d": Icon09,
+    "50n": Icon09,
   };
   const IconComponent = iconNames[icon.icon];
-  return <div className="App">{<IconComponent />}</div>;
+
+  if (IconComponent) return <div className="App">{<IconComponent />}</div>;
+  else {
+    return (
+      <img
+        src={`https://openweathermap.org/img/wn/${icon.icon}@2x.png`}
+        alt="Weather Icon from openweathermap"
+      />
+    );
+  }
 }

@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState([]);
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState("Warszawa");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,9 @@ function App() {
           setIsLoading(false);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, [term]);
   return (
     <>
